@@ -17,6 +17,7 @@ class UpdateContext implements \PHPixie\Processors\Processor
     {
         $context = $this->auth->buildContext();
         $this->settableContextContainer->setAuthContext($context);
+        $this->auth->domains()->check();
         return $value;
     }
 }

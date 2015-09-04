@@ -1,28 +1,22 @@
 <?php
 
-namespace PHPixie;
+namespace PHPixie\AuthProcessors;
 
-class AuthProcessors
+class Builder
 {
-    protected $builder;
+    protected $auth;
+    protected $parsers;
     
     public function __construct($auth)
     {
-        $this->builder = $this->buildBuilder($auth);
+        $this->auth = $auth;
     }
     
-    public function updateContext($settableConextContainer)
+    public function updateContextProcessor($settableConextContainer)
     {
-        return $this->builder->updateContextProcessor($settableConextContainer);
-    }
-    
-    public function builder()
-    {
-        return $this->builder;
-    }
-    
-    protected function buildBuilder($http)
-    {
-        return new HTTPProcessors\Builder($http);
+        return new Processor\UpdateContext(
+            $this->auth,
+            $settableConextContainer
+        );
     }
 }

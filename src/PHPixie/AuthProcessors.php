@@ -23,6 +23,6 @@ class AuthProcessors
     
     protected function buildBuilder($auth)
     {
-        return new HTTPProcessors\Builder($auth);
+        return new AuthProcessors\Builder($auth);
     }
 }
